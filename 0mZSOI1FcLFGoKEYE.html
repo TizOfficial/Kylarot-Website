@@ -1,0 +1,1302 @@
+<html><head><base href="html_page.html"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KYLAROT WEBSITE</title>
+
+<style>
+:root {
+    --primary: #8B4513;
+    --secondary: #DAA520;
+    --background: #F5F5DC;
+    --text: #2F4F4F;
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --shadow: 0 8px 32px rgba(139, 69, 19, 0.15);
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 3rem;
+    background: var(--card-bg);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.logo-container::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover::after {
+    transform: scaleX(1);
+}
+
+.logo-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+    border: 3px solid var(--primary);
+}
+
+.social-icons {
+    display: flex;
+    gap: 2rem;
+    padding: 0.5rem;
+}
+
+.social-icons a {
+    color: #9ca3af;
+    font-size: 1.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    transform: scale(1);
+}
+
+.social-icons a:hover {
+    transform: scale(1.2) rotate(8deg);
+    color: #ec4899;
+}
+
+.social-icons a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient);
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover::after {
+    transform: scaleX(1);
+}
+
+.main-nav {
+    position: fixed;
+    top: 80px;
+    right: -300px;
+    width: 300px;
+    height: auto;
+    background: var(--card-bg);
+    flex-direction: column;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: right 0.3s ease;
+    border-radius: 0 0 0 20px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-nav.active {
+    right: 0;
+}
+
+.nav-link {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 1rem;
+    width: 100%;
+    text-align: left;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    background: rgba(139, 69, 19, 0.1);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    margin-left: auto;
+    position: relative;
+    z-index: 1000;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+@media (max-width: 1024px) {
+    .header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .main-nav {
+        margin: 1rem 0;
+        overflow-x: auto;
+        padding: 0.5rem;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+        position: relative;
+    }
+
+    .logo-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .logo-image {
+        width: 50px;
+        height: 50px;
+    }
+
+    .social-icons {
+        width: 100%;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .main-nav {
+        width: 100%;
+        right: -100%;
+        top: 140px;
+        border-radius: 0;
+    }
+
+    .nav-link {
+        white-space: nowrap;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+.page-transition {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(139, 69, 19, 0.1);
+}
+
+@media (max-width: 768px) {
+    .section {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+    }
+
+    .section h2 {
+        font-size: 1.8rem;
+    }
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+.stat-item {
+    border-left: 4px solid transparent;
+    border-radius: 20px;
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    border-left: 4px solid var(--primary);
+    transform: translateX(5px);
+}
+
+.stat-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover::after {
+    transform: scaleX(1);
+}
+
+.agency-container {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.agency-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(139, 69, 19, 0.05), rgba(218, 165, 32, 0.05));
+    z-index: 0;
+}
+
+.button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--gradient);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.2);
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+}
+
+@media (max-width: 768px) {
+    .button {
+        width: 100%;
+        text-align: center;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+@media (max-width: 768px) {
+    .equipment-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+
+    .equipment-item {
+        padding: 1.5rem;
+    }
+}
+
+.equipment-item {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(139, 69, 19, 0.1);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.equipment-item .features {
+    margin: 1rem 0;
+    padding-left: 1.2rem;
+}
+
+.equipment-item .features li {
+    margin: 0.5rem 0;
+    position: relative;
+}
+
+.equipment-item .features li::before {
+    content: '→';
+    position: absolute;
+    left: -1.2rem;
+    color: var(--primary);
+}
+
+.equipment-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(139, 69, 19, 0.2);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+    }
+}
+
+.equipment-item,
+.stat-item,
+.button {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.social-icons a {
+    padding: 0.5rem;
+    margin: 0 0.25rem;
+}
+
+.main-content {
+    margin-top: 1rem;
+}
+
+.affiliate-banner {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+    box-shadow: var(--shadow);
+    text-align: left;
+    position: relative;
+}
+
+.affiliate-banner::before {
+    content: none; /* Remove the gradient line */
+}
+
+.affiliate-banner h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text); /* Change back to normal text color */
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    background: none;
+}
+
+.affiliate-banner p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text);
+    max-width: 800px;
+    margin: 0;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .affiliate-banner {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .affiliate-banner h2 {
+        font-size: 1.5rem;
+    }
+    
+    .affiliate-banner p {
+        font-size: 1rem;
+    }
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-content {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    transform: translateY(-50px);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+    border: 2px solid var(--primary);
+}
+
+.popup-overlay.active .popup-content {
+    transform: translateY(0);
+}
+
+.popup-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.popup-close:hover {
+    transform: rotate(90deg);
+    color: var(--secondary);
+}
+
+.popup-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+.popup-description {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: var(--text);
+    text-align: center;
+}
+
+.popup-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .popup-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+    
+    .popup-title {
+        font-size: 1.5rem;
+    }
+}
+
+.footer {
+    background: var(--card-bg);
+    padding: 3rem 2rem;
+    margin-top: 4rem;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(139, 69, 19, 0.1);
+}
+
+.footer .social-icons {
+    margin-bottom: 2rem;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.footer .social-icons a {
+    color: var(--primary);
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.footer .social-icons a:hover {
+    color: var(--secondary);
+    transform: translateY(-5px);
+}
+
+.footer .social-icons a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient);
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.footer .social-icons a:hover::after {
+    transform: scaleX(1);
+}
+
+.footer p {
+    text-align: center;
+    color: var(--text);
+    font-size: 0.9rem;
+    margin: 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(139, 69, 19, 0.1);
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 2rem 1rem;
+    }
+    
+    .footer .social-icons {
+        gap: 1.5rem;
+    }
+    
+    .footer .social-icons a {
+        font-size: 1.5rem;
+    }
+}
+
+.nav-copyright {
+    padding: 1rem;
+    color: var(--text);
+    font-size: 0.9rem;
+    text-align: center;
+    border-top: 1px solid rgba(139, 69, 19, 0.1);
+    margin-top: 1rem;
+}
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-close"><i class="fas fa-times"></i></div>
+        <h2 class="popup-title">True Connective sucht Creator!</h2>
+        <p class="popup-description">
+            Bist du bereit, deine Content-Creator-Karriere auf das nächste Level zu bringen? 
+            True Connective sucht talentierte Creator, die Teil unserer erfolgreichen Community werden möchten.
+            <br><br>
+            Wir bieten:
+            <br>• Professionelles Management
+            <br>• Networking-Möglichkeiten
+            <br>• Exklusive Partnerships
+            <br>• Persönliche Entwicklung
+        </p>
+        <div class="popup-buttons">
+            <a href="https://trueconnective.com/apply" target="_blank" class="button">Jetzt bewerben</a>
+            <button class="button" style="background: var(--text)" onclick="closePopup()">Später</button>
+        </div>
+        <div style="
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(139, 69, 19, 0.1);
+            font-size: 0.9rem;
+            color: var(--text);
+            text-align: center;
+        ">
+            © 2024 Kylarot. Alle Rechte vorbehalten.
+        </div>
+    </div>
+</div>
+
+<header class="header">
+    <div class="logo-container">
+        <img src="/IMG_20241117_150741_222.jpg" alt="Bald eagle logo facing left against beige background" class="logo-image">
+        <h1 class="logo-text">KYLAROT</h1>
+    </div>
+    <div class="social-icons">
+        <a href="https://www.tiktok.com/@youraccount" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/c/yourchannel" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/youraccount" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com/youraccount" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.twitch.tv/youraccount" target="_blank"><i class="fab fa-twitch"></i></a>
+    </div>
+    <div class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <nav class="main-nav">
+        <a href="#" class="nav-link">Home</a>
+        <br>
+        <a href="#agentur" class="nav-link">Agentur</a>
+        <br>
+        <a href="#statistiken" class="nav-link">Statistiken</a>
+        <br>
+        <a href="#setup" class="nav-link">Mein Setup</a>
+        <br>
+        <a href="#partner-affiliate" class="nav-link">Partner & Affiliate Links</a>
+        <br>
+        <a href="#creator-shoutouts" class="nav-link">Creator Shoutouts</a>
+        <br>
+        <div class="nav-copyright">
+            © 2024 Kylarot. Alle Rechte vorbehalten 
+        </div>
+    </nav>
+</header>
+
+<main class="main-content page-transition">
+    <section class="section">
+        <h2 id="agentur">Meine Agentur</h2>
+        <div class="agency-container">
+            <div class="agency-logo" style="
+                font-size: 3rem;
+                color: var(--primary);
+            ">
+                <i class="fas fa-handshake"></i>
+            </div>
+            <div class="agency-info" style="
+                text-align: center;
+            ">
+                <h3 style="
+                    font-size: 1.8rem;
+                    margin-bottom: 1rem;
+                    background: var(--gradient);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                ">True Connective</h3>
+                <p style="
+                    font-size: 1.1rem;
+                    color: var(--text);
+                    max-width: 600px;
+                    margin: 0 auto;
+                ">Stolzes Mitglied der True Connective Agentur - Wo Kreativität auf professionelles Management trifft.</p>
+                <a href="https://trueconnective.com" target="_blank" class="button" style="
+                    margin-top: 1.5rem;
+                ">Mehr erfahren</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 id="statistiken">Meine Content-Statistiken</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">1268</div>
+                <div class="stat-label">Follower insgesamt</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10K+</div>
+                <div class="stat-label">Monatliche Views</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Uploads</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Viral Videos</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 id="setup">Video Equipment</h2>
+        <div class="equipment-grid">
+            <div class="equipment-item">
+                <h3>Handy</h3>
+                <p>Redmi Note 13 Pro Plus</p>
+                <p class="price">304,00€</p>
+                <ul class="features">
+                    <li>16MP Front Kamera</li>
+                    <li>1080p Video</li>
+                    <li>Dual-Lautsprecher <br> Unterstützt Dolby Atmos®</li>
+                </ul>
+                <a href="https://www.amazon.de/Xiaomi-Handy-Redmi-Note-256GB/dp/B0CPPZRQJK?ie=UTF8&tag=hydrdespg-21&hvadid=719343225255&hvpos=&hvexid=&hvnetw=g&hvrand=17850086945011887362&hvpone=&hvptwo=&hvqmt=&hvdev=m&ref=pd_sl_31mjnz44bq_e&gad_source=1" class="button">Kaufen</a>
+            </div>
+            <div class="equipment-item">
+                <h3>Mikrofon</h3>
+                <p>Moman CP1X Ansteck Mikrofon</p>
+                <p class="price">32,24€</p>
+                <ul class="features">
+                    <li>Intelligente Rauschunterdrückung</li>
+                    <li>Für die Aufnahme von Typ-C-Geräten</li>
+                    <li>Omnidirektionales Mikrofon</li>
+                </ul>
+                <a href="https://www.amazon.de/MOMAN-Lavalier-Funkmikrofon-Ansteckmikrofon-USB-C-Kabellos-Canceling-Android-Smartphone/dp/B0BZCDXZ3N?ref_=dslp_ap_dp&th=1&psc=1" class="button">Kaufen</a>
+            </div>
+            <div class="equipment-item">
+                <h3>Beleuchtung</h3>
+                <p>Grundig Selfie Ringlicht</p>
+                <p class="price">16,99€</p>
+                <ul class="features">
+                    <li>120 LED</li>
+                    <li>USB Betrieben</li>
+                    <li>Farbtemperatur einstellbar</li>
+                </ul>
+                <a href="https://www.amazon.de/Grundig-Ringlampe-mit-Stativ-Flexibler/dp/B0BZQ2KRL9/ref=asc_df_B0BZQ2KRL9?mcid=0d3f8b20b03b346c89b32826f4fca778&th=1&psc=1&tag=googshopde-21&linkCode=df0&hvadid=697705395055&hvpos=&hvnetw=g&hvrand=8673969119608737781&hvpone=&hvptwo=&hvqmt=&hvdev=m&hvdvcmdl=&hvlocint=&hvlocphy=9199176&hvtargid=pla-2265473897427&psc=1&gad_source=1" class="button">Kaufen</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Software & Programme</h2>
+        <div class="equipment-grid">
+            <div class="equipment-item">
+                <h3>Video Editing</h3>
+                <p>CapCut</p>
+                <p class="price">Kostenlos Oder 11,99€/Monat</p>
+                <ul class="features">
+                    <li>Professioneller Videoschnitt</li>
+                    <li>Automatisierte Tools</li>
+                    <li>Regelmäßige Updates</li>
+                </ul>
+                <a href="https://www.capcut.com/de-de/" class="button">Mehr Info</a>
+            </div>
+            <div class="equipment-item">
+                <h3>Thumbnails</h3>
+                <p>Adobe Express</p>
+                <p class="price">Kostenlos Oder 9,99€/Monat</p>
+                <ul class="features">
+                    <li>Professionelle Bildbearbeitung</li>
+                    <li>KI-gestützte Tools</li>
+                    <li>Unbegrenzte Möglichkeiten</li>
+                </ul>
+                <a href="https://www.adobe.com/express/" class="button">Mehr Info</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section affiliate-banner">
+        <h2 id="partner-affiliate">Partner & Affiliate Links</h2>
+        <p>Durch die Nutzung der Affiliate-Links auf dieser Seite unterstützt du aktiv meinen Content - für dich völlig kostenfrei! Alle vorgestellten Produkte wurden von mir persönlich getestet und werden täglich in meiner Content-Produktion eingesetzt. Deine Unterstützung hilft mir dabei, weiterhin hochwertige Inhalte zu erstellen.</p>
+    </section>
+
+    <section class="section">
+        <h2 id="creator-shoutouts">Creator Shoutouts</h2>
+        <div class="shoutout-grid" style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        ">
+            <div class="shoutout-item" style="
+                background: var(--card-bg);
+                border: 1px solid rgba(139, 69, 19, 0.1);
+                border-radius: 20px;
+                padding: 2rem;
+                box-shadow: var(--shadow);
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            ">
+                <div class="creator-avatar" style="
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    margin: 0 auto 1rem;
+                    background: var(--gradient);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                ">
+                    <i class="fas fa-user" style="font-size: 2.5rem; color: white;"></i>
+                </div>
+                <h3 style="margin-bottom: 0.5rem;">NATSUIBARU</h3>
+                <p style="color: var(--text); margin-bottom: 1rem;">@natsuibaru</p>
+                <p style="font-size: 0.9rem; line-height: 1.6;">Danke für die konstante Unterstützung und Inspiration!</p>
+                <a href="https://www.tiktok.com/@natsuibaru" target="_blank" class="button" style="margin-top: 1rem;">Folgen</a>
+            </div>
+
+            <div class="shoutout-item" style="
+                background: var(--card-bg);
+                border: 1px solid rgba(139, 69, 19, 0.1);
+                border-radius: 20px;
+                padding: 2rem;
+                box-shadow: var(--shadow);
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            ">
+                <div class="creator-avatar" style="
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    margin: 0 auto 1rem;
+                    background: var(--gradient);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                ">
+                    <i class="fas fa-user" style="font-size: 2.5rem; color: white;"></i>
+                </div>
+                <h3 style="margin-bottom: 0.5rem;">Creator Name</h3>
+                <p style="color: var(--text); margin-bottom: 1rem;">@creatorhandle</p>
+                <p style="font-size: 0.9rem; line-height: 1.6;">Ein großartiger Mentor und Wegbegleiter!</p>
+                <a href="https://www.instagram.com/creatorhandle" target="_blank" class="button" style="margin-top: 1rem;">Folgen</a>
+            </div>
+
+            <div class="shoutout-item" style="
+                background: var(--card-bg);
+                border: 1px solid rgba(139, 69, 19, 0.1);
+                border-radius: 20px;
+                padding: 2rem;
+                box-shadow: var(--shadow);
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            ">
+                <div class="creator-avatar" style="
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    margin: 0 auto 1rem;
+                    background: var(--gradient);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                ">
+                    <i class="fas fa-user" style="font-size: 2.5rem; color: white;"></i>
+                </div>
+                <h3 style="margin-bottom: 0.5rem;">Creator Name</h3>
+                <p style="color: var(--text); margin-bottom: 1rem;">@creatorhandle</p>
+                <p style="font-size: 0.9rem; line-height: 1.6;">Danke für die tolle Zusammenarbeit!</p>
+                <a href="https://www.instagram.com/creatorhandle" target="_blank" class="button" style="margin-top: 1rem;">Folgen</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="social-icons">
+        <a href="https://www.tiktok.com/@youraccount" target="_blank" aria-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://www.youtube.com/c/yourchannel" target="_blank" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.instagram.com/youraccount" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://twitter.com/youraccount" target="_blank" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.twitch.tv/youraccount" target="_blank" aria-label="Twitch">
+            <i class="fab fa-twitch"></i>
+        </a>
+    </div>
+    <p>© 2024 Kylarot. Alle Rechte vorbehalten.</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    
+    menuToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        mainNav.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!menuToggle.contains(e.target) && !mainNav.contains(e.target)) {
+            menuToggle.classList.remove('active');
+            mainNav.classList.remove('active');
+        }
+    });
+
+    // Close menu when clicking a nav link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            menuToggle.classList.remove('active');
+            mainNav.classList.remove('active');
+        });
+    });
+});
+
+document.querySelector('.logo-image').addEventListener('mouseenter', function() {
+    this.style.transform = 'scale(1.1) rotate(5deg)';
+    this.style.transition = 'transform 0.3s ease';
+});
+
+document.querySelector('.logo-image').addEventListener('mouseleave', function() {
+    this.style.transform = 'scale(1) rotate(0deg)';
+});
+
+document.querySelectorAll('.equipment-item').forEach(item => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(30px)';
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                entry.target.style.transition = 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    observer.observe(item);
+});
+
+document.querySelectorAll('.stat-item').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        item.querySelector('.stat-number').style.animation = 'pulse 1s infinite';
+    });
+    
+    item.addEventListener('mouseleave', () => {
+        item.querySelector('.stat-number').style.animation = 'none';
+    });
+});
+
+// Add hover effect for agency container
+document.querySelector('.agency-container').addEventListener('mouseenter', function() {
+    this.style.transform = 'scale(1.02)';
+    this.style.transition = 'transform 0.3s ease';
+    this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.2)';
+});
+
+document.querySelector('.agency-container').addEventListener('mouseleave', function() {
+    this.style.transform = 'scale(1)';
+    this.style.boxShadow = 'none';
+});
+
+// Smooth scroll behavior
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Enhanced loading animation
+window.addEventListener('load', () => {
+    document.querySelectorAll('.section').forEach((section, index) => {
+        setTimeout(() => {
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
+        }, index * 200);
+    });
+});
+
+// Add this script for smooth transitions
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('page-transition');
+});
+
+// New animations for sections
+document.querySelectorAll('.section').forEach(section => {
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(30px)';
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                entry.target.style.transition = 'all 1s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    observer.observe(section);
+});
+
+// Add hover effects for equipment items
+document.querySelectorAll('.equipment-item').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        item.style.transform = 'translateY(-10px) scale(1.02)';
+    });
+    
+    item.addEventListener('mouseleave', () => {
+        item.style.transform = 'translateY(0) scale(1)';
+    });
+});
+
+// Add smooth reveal animation for stats
+const animateStats = () => {
+    document.querySelectorAll('.stat-number').forEach((stat, index) => {
+        setTimeout(() => {
+            stat.style.opacity = '1';
+            stat.style.transform = 'translateY(0)';
+        }, index * 200);
+    });
+};
+
+// Initialize stat animations when in view
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateStats();
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stats-grid').forEach(grid => {
+    statsObserver.observe(grid);
+});
+
+// Add touch event handlers for mobile
+document.addEventListener('DOMContentLoaded', function() {
+    // Add touch feedback for buttons
+    const buttons = document.querySelectorAll('.button');
+    buttons.forEach(button => {
+        button.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.98)';
+        });
+        
+        button.addEventListener('touchend', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+
+    // Improve mobile menu scrolling
+    const mainNav = document.querySelector('.main-nav');
+    let isScrolling = false;
+    let startX;
+    let scrollLeft;
+
+    mainNav.addEventListener('touchstart', (e) => {
+        isScrolling = true;
+        startX = e.touches[0].pageX - mainNav.offsetLeft;
+        scrollLeft = mainNav.scrollLeft;
+    });
+
+    mainNav.addEventListener('touchmove', (e) => {
+        if (!isScrolling) return;
+        e.preventDefault();
+        const x = e.touches[0].pageX - mainNav.offsetLeft;
+        const walk = (x - startX) * 2;
+        mainNav.scrollLeft = scrollLeft - walk;
+    });
+
+    mainNav.addEventListener('touchend', () => {
+        isScrolling = false;
+    });
+
+    // Add viewport height fix for mobile browsers
+    function setVH() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    setVH();
+    window.addEventListener('resize', setVH);
+});
+
+// Social icons hover effect
+document.querySelectorAll('.footer .social-icons a').forEach(icon => {
+    icon.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px) rotate(8deg)';
+    });
+    
+    icon.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) rotate(0)';
+    });
+});
+
+// Shoutout item hover effects
+document.querySelectorAll('.shoutout-item').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px)';
+        this.style.boxShadow = '0 15px 30px rgba(139, 69, 19, 0.2)';
+    });
+
+    item.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = 'var(--shadow)';
+    });
+});
+
+// Add smooth hover effect for features list items
+document.querySelectorAll('.features li').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        item.style.transform = 'translateX(5px)';
+        item.style.transition = 'transform 0.3s ease';
+    });
+    
+    item.addEventListener('mouseleave', () => {
+        item.style.transform = 'translateX(0)';
+    });
+});
+
+// Animate section headings on scroll
+document.querySelectorAll('.section h2').forEach(heading => {
+    heading.style.opacity = '0';
+    heading.style.transform = 'translateY(20px)';
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                entry.target.style.transition = 'all 0.6s ease-out';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    observer.observe(heading);
+});
+
+function showPopup() {
+    // Show popup after 2 seconds on every visit
+    setTimeout(() => {
+        document.querySelector('.popup-overlay').classList.add('active');
+    }, 2000);
+}
+
+function closePopup() {
+    document.querySelector('.popup-overlay').classList.remove('active');
+}
+
+// Add event listeners for popup
+document.addEventListener('DOMContentLoaded', function() {
+    showPopup();
+    
+    document.querySelector('.popup-close').addEventListener('click', closePopup);
+    
+    // Close popup when clicking outside
+    document.querySelector('.popup-overlay').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closePopup();
+        }
+    });
+    
+    // Prevent closing when clicking popup content
+    document.querySelector('.popup-content').addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+});
+</script>
+
+</body></html>
